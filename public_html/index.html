@@ -6,21 +6,29 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>The HTML5 Canvas Project</title>
+        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
+
+    <body onload="doGLDraw();">
         <canvas id="GLCanvas" width="640" height="480">
             Your browser does not support the HTML5 canvas
+
+            <script type="text/javascript" src="src/WebGL.js"></script>
+            <script type="text/javascript" src="src/VertexBuffer.js"></script>           
+            <script type="text/javascript" src="src/ShaderSupport.js"></script>
+             <script type="x-shader/x-vertex" id="VertexShader">
+                attribute vec3 aSquareVertexPosition;
+                void main(void) {
+                    gl_Position = vec4(aSquareVertexPosition, 1.0);
+                }
+            </script>
+            <script type="x-shader/x-fragment" id="FragmentShader">
+                void main(void) {
+                    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+                }
+            </script>
         </canvas>
-        <script type="text/javascript">
-            var canvas = document.getElementById("GLCanvas");
-            var gl = canvas.getContext("webgl") || canvas.getContext("experimenal-webgl")
-            if( gl !== null ) {
-                gl.clearColor(0.8, 0.0, 0.8, 1.0 );
-                gl.clear( gl.COLOR_BUFFER_BIT);
-            }
-        </script>
     </body>
 </html>
