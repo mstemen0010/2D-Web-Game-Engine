@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+/* global gShaderVertexPositionAttribute, gSimpleShader */
+
 "use strict";
 var gGL = null;
 
@@ -25,10 +27,6 @@ function initializeGL() {
 }
 
 function clearCanvas() {
-    gGL.clear(gGL.COLOR_BUFFER_BIT); // clear to the color perviously set
-}
-
-function drawSquare() {
     gGL.clear(gGL.COLOR_BUFFER_BIT);
 // Step A: Activate the shader to use
     gGL.useProgram(gSimpleShader);
@@ -40,5 +38,5 @@ function drawSquare() {
 
 function doGLDraw() {
     initializeGL();
-    drawSquare();
+    clearCanvas();
 }
